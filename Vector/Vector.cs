@@ -27,7 +27,7 @@ namespace Vector
         }
         public Vector(Vector copyVector)
         {
-            vector = copyVector.vector;
+            vector = copyVector.vector; 
         }
     }
 }
