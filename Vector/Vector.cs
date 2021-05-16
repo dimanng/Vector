@@ -8,7 +8,7 @@ namespace Vector
 {
     public class Vector
     {
-        private double[] vector;
+        public double[] vector; ///private
 
         public Vector(int n)
         {
@@ -25,9 +25,40 @@ namespace Vector
                 Console.WriteLine("Ошибка: " + e.Message);
             }
         }
-        public Vector(Vector copyVector)
+        public Vector(Vector copyVector)////!!!!!!!!!!!!!!!
         {
-            vector = copyVector.vector; 
+            vector = copyVector.vector;
         }
+
+        public Vector(double[] array)
+        {
+            vector = new double[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                vector[i] = array[i];
+            }
+        }
+
+        public Vector(int n, double[] array)
+        {
+            vector = new double[n];
+            for (int i = 0; i < array.Length; i++)
+            {
+                vector[i] = array[i];
+            }
+        }
+
+        public int GetSize()
+        {
+            return vector.Length;
+        }
+
+        public override string ToString()
+        {
+            string str = "";
+
+            return str;
+        }
+
     }
 }
