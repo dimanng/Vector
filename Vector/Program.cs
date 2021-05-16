@@ -10,19 +10,13 @@ namespace Vector
     {
         static void Main(string[] args)
         {
-            Vector vc1 = new Vector(6, new double[] { 1, 2, 8 });
+            Vector vc1 = new Vector(new double[] { 1, 1, 1 });
+            Vector vc2 = new Vector(new double[] { 1, 1, 1 });
 
-            for (int i = 0; i < vc1.vector.Length; i++)
-            {
-                Console.WriteLine(vc1.vector[i]);
-            }
+            Console.WriteLine(vc1.Equals(vc2));
 
-            Console.WriteLine();
-
-            Console.WriteLine(vc1.GetSize());
-            
-
-
+            Console.WriteLine(vc1.GetHashCode());
+            Console.WriteLine(vc2.GetHashCode());
 
 
 
