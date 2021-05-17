@@ -27,7 +27,11 @@ namespace Vector
         }
         public Vector(Vector copyVector)////!!!!!!!!!!!!!!!
         {
-            vector = copyVector.vector;
+            vector = new double[copyVector.vector.Length];
+            for (int i = 0; i < copyVector.vector.Length; i++)
+            {
+                vector[i] = copyVector.vector[i];
+            }
         }
 
         public Vector(double[] array)
@@ -68,6 +72,11 @@ namespace Vector
 
         public void AddVector(Vector vector)
         {
+            if (GetSize() > vector.GetSize())
+            {
+                Array.Resize(ref vector.vector, GetSize());
+            } else
+                Array.Resize(ref this.vector, vector.GetSize());
             for (int i = 0; i < this.vector.Length; i++)
             {
                 this.vector[i] = this.vector[i] + vector.vector[i];
@@ -75,6 +84,12 @@ namespace Vector
         }
         public void RemoveVector(Vector vector)
         {
+            if (GetSize() > vector.GetSize())
+            {
+                Array.Resize(ref vector.vector, GetSize());
+            }
+            else
+                Array.Resize(ref this.vector, vector.GetSize());
             for (int i = 0; i < this.vector.Length; i++)
             {
                 this.vector[i] = this.vector[i] - vector.vector[i];
@@ -159,5 +174,60 @@ namespace Vector
             return hash;
            
         }
+        
+        public static Vector AdditionVectors (Vector vc1, Vector vc2)
+        {
+            int lengthNew = vc2.GetSize();
+
+            if (vc1.GetSize() > vc2.GetSize())
+            {
+                lengthNew = vc1.GetSize();
+            }
+
+            Vector vc = new Vector(vc1);
+
+            vc.AddVector(vc2);
+
+            return vc;
+        }
+
+        public static Vector RemovingVectors(Vector vc1, Vector vc2)
+        {
+            int lengthNew = vc2.GetSize();
+
+            if (vc1.GetSize() > vc2.GetSize())
+            {
+                lengthNew = vc1.GetSize();
+            }
+
+            Vector vc = new Vector(vc1);
+
+            vc.RemoveVector(vc2);
+
+            return vc;
+        }
+
+        public static double ScalarComposition(Vector vc1, Vector vc2)
+        {
+            int lengthMin = vc2.GetSize();
+
+            if (vc1.GetSize() < vc2.GetSize())
+            {
+                lengthMin = vc1.GetSize();
+            }
+
+            double sum = 0; 
+
+            for (int i = 0; i < lengthMin; i++)
+            {
+                sum = sum + vc1.vector[i] * vc2.vector[i];
+            }
+
+            return sum;
+        }
+
+
     }
+
+
 }

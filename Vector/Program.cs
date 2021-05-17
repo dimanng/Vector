@@ -10,14 +10,17 @@ namespace Vector
     {
         static void Main(string[] args)
         {
-            Vector vc1 = new Vector(new double[] { 1, 1, 1 });
-            Vector vc2 = new Vector(new double[] { 1, 1, 1 });
+            Vector vc1 = new Vector(new double[] { 1, 1, 1, 0 });
+            Vector vc2 = new Vector(new double[] { 1, 1, 1, 1, 5});
 
-            Console.WriteLine(vc1.Equals(vc2));
+            Console.WriteLine(vc1);
+            Console.WriteLine(vc2);
 
-            Console.WriteLine(vc1.GetHashCode());
-            Console.WriteLine(vc2.GetHashCode());
+            Vector vc = new Vector(new double[0]);
+            
+            Console.WriteLine(Vector.ScalarComposition(vc1, vc2));
 
+            
 
 
             Console.ReadKey();
